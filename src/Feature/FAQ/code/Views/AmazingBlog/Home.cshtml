@@ -1,0 +1,32 @@
+@using Sitecore.Data.Items;
+@using Sitecore.Mvc
+
+@{ Item item = Sitecore.Context.Database.GetItem("{643CF161-679E-479B-91FF-BFBE40E29DFD}");
+                Item[] items = item.Axes.GetDescendants(); }
+
+<main role="main" class="container blog-posts">
+
+    <div class="row">
+
+        @foreach (Item foo in items)
+        {
+            <div class="blog-post-card card col-lg-4 col-md-6">
+                @Html.Sitecore().Field("Image", foo, new { @class = "card-img-top", @alt = "Card image cap" })
+                <div class="card-body bg-light">
+                    <strong class="d-inline-block mb-2 text-success">@Html.Sitecore().Field("Type", foo)</strong>
+                    <h3 class="card-title">@Html.Sitecore().Field("Title", foo)</h3>
+                    <div class="mb-1 text-muted">
+                        @Html.Sitecore().Field("Date", foo, new { format = "MMM d, yyyy" })
+                    </div>
+                    <p>@Html.Sitecore().Field("ShortContent", foo)</p>
+                    @{ string url = Sitecore.Links.LinkManager.GetItemUrl(foo); }
+                    <p class="btn btn-warning btn-block"><a href="@url" style="color: white; text-decoration: none;">Read on</a></p>
+                </div>
+            </div>
+        }
+
+
+
+
+    </div>
+</main>

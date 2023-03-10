@@ -1,0 +1,12 @@
+@{
+    var item = Sitecore.Context.Database.GetItem("/sitecore/content/AmazingBlog/WebsiteSettings/LocalSettings");
+}
+	
+	<header>
+        <div class="container">
+            <div class="jumbotron text-white bg-primary">
+                <h1 class="display-3">@Html.Raw(item.Fields["Title"].Value)</h1>
+                <p class="lead">@Html.Raw(item.Fields["Lead"].Value)</p>
+            </div>
+        </div>
+    </header>

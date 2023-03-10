@@ -1,0 +1,11 @@
+@{
+    var item = Sitecore.Context.Database.GetItem("/sitecore/content/AmazingBlog/WebsiteSettings/LocalSettings");
+}
+	
+	<footer>
+        <div class="container">
+            <div class="text-white bg-primary">
+                <p class="lead">@Html.Raw(item.Fields["Copyright"].Value)</p>
+            </div>
+        </div>
+    </footer>
